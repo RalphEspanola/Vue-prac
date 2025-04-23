@@ -9,6 +9,7 @@ import AppLayout from '@/components/layout/AppLayout.vue'
         <v-col cols="12" md="6" class="opacity-80 d-flex justify-center">
           <v-card
             class="mx-auto justify-center bg-grey-darken-3"
+            elevation="8"
             subtitle="“Your Spot,  Your Business, Your Advantage!”"
           >
             <template v-slot:title>
@@ -26,7 +27,9 @@ import AppLayout from '@/components/layout/AppLayout.vue'
 
                 <v-text-field label="Password" type="password"></v-text-field>
 
-                <v-btn class="mt-2" type="submit" block>Login</v-btn>
+                <v-btn class="mt-2" elevation="12" type="submit" block color="grey-darken-1"
+                  >Login</v-btn
+                >
                 <v-divider class="my-5"></v-divider>
                 <h5 class="text-center">
                   Don't Have an account?
