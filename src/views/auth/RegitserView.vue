@@ -16,6 +16,7 @@ import AppLayout from '@/components/layout/AppLayout.vue'
             </template>
             <v-card-text class="bg-grey-darken-3 pt-4">
               <v-form fast-fail @submit.prevent>
+                <v-text-field placeholder="First Name" variant="outlined"></v-text-field>
                 <v-text-field label="First Name" variant="outlined"></v-text-field>
                 <v-text-field label="Last Name" variant="outlined"></v-text-field>
                 <v-text-field label="Email" variant="outlined"></v-text-field>
@@ -25,7 +26,16 @@ import AppLayout from '@/components/layout/AppLayout.vue'
                   type="password"
                   variant="outlined"
                 ></v-text-field>
-                <v-btn class="mt-2" type="submit" block>Register</v-btn>
+
+                <v-btn
+                  class="mt-2"
+                  elevation="12"
+                  type="submit"
+                  block
+                  color="grey-darken-1"
+                  prepend-icon="mdi-account-plus"
+                  >Register</v-btn
+                >
                 <v-divider class="my-5"></v-divider>
                 <h5 class="text-center">
                   Already have an account?
