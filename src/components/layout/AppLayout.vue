@@ -18,15 +18,19 @@ function onClick() {
           no-repeat
           center
           cover
-          ><v-row justify="end" class="pt-5 pr-11">
-            <v-btn
-              :icon="theme === 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"
-              slim
-              @click="onClick"
-              variant="elevated"
-              :color="theme === 'light' ? 'yellow-lighten-3' : 'yellow-darken-2'"
-            ></v-btn>
+        >
+          <v-row justify="end">
+            <v-col cols="auto" class="mr-4 mt-5">
+              <v-btn
+                :icon="theme === 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"
+                slim
+                @click="onClick"
+                variant="elevated"
+                :color="theme === 'light' ? 'yellow-lighten-3' : 'yellow-darken-2'"
+              ></v-btn>
+            </v-col>
           </v-row>
+
           <v-container>
             <slot name="content"></slot>
           </v-container>
