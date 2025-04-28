@@ -6,6 +6,8 @@ import {
   confirmedValidator,
 } from '@/utils/validators'
 import { ref } from 'vue'
+import AlertNotification from '@/components/common/AlertNotification.vue'
+import { supabase, formActionDefault } from '@/utils/supabase'
 
 const formDataDefault = {
   firstname: '',
@@ -19,13 +21,41 @@ const formData = ref({
   ...formDataDefault,
 })
 
+const formAction = ref({
+  ...formActionDefault,
+})
+
 const isPasswordVisible = ref(false)
 const isPasswordConfirmVisible = ref(false)
 const refVForm = ref()
 
 // Functions
-const onSubmit = () => {
-  // alert(formData.value.email)
+const onSubmit = async () => {
+  formAction.value = { ...formActionDefault }
+  formAction.value.formProcess = true
+
+  const { data, error } = await supabase.auth.signUp({
+    email: formData.value.email,
+    password: formData.value.password,
+    options: {
+      data: {
+        firstname: formData.value.firstname,
+        lastname: formData.value.lastname,
+      },
+    },
+  })
+
+  if (error) {
+    console.log(error)
+    formAction.value.formErrorMessage = error.message
+    formAction.value.formStatus = error.status
+  } else if (data) {
+    console.log(data)
+    formAction.value.formSuccessMessage = 'Successfully Registered Account'
+    //Can Add more actions here
+    refVForm.value?.reset()
+  }
+  formAction.value.formProcess = false
 }
 
 const onFormSubmit = () => {
@@ -36,6 +66,10 @@ const onFormSubmit = () => {
 </script>
 
 <template>
+  <AlertNotification
+    :form-success-message="formAction.formSuccessMessage"
+    :form-error-message="formAction.formErrorMessage"
+  ></AlertNotification>
   <v-form ref="refVForm" @submit.prevent="onFormSubmit">
     <v-row>
       <v-col col="12" md="6">
@@ -96,8 +130,10 @@ const onFormSubmit = () => {
         type="submit"
         block
         color="grey-darken-1"
-        prepend-icon="mdi-login"
-        >Login</v-btn
+        prepend-icon="mdi-account-plus"
+        :disabled="formAction.formProcess"
+        :loading="formAction.formProcess"
+        >Register</v-btn
       >
     </v-row>
   </v-form>
