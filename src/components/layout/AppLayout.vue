@@ -10,7 +10,7 @@ function onClick() {
 </script>
 
 <template>
-  <v-responsive class="border rounded">
+  <v-responsive>
     <v-app :theme="theme">
       <v-main>
         <v-img
