@@ -15,12 +15,13 @@ function onClick() {
       <v-main>
         <v-img
           :src="theme === 'light' ? '/images/BodyLight.png' : '/images/BodyDark.png'"
+          height="100%"
           no-repeat
           center
           cover
         >
-          <v-row justify="end">
-            <v-col cols="auto" class="mr-4 mt-5">
+          <v-container>
+            <v-col cols="12" class="d-flex justify-end mt-5">
               <v-btn
                 :icon="theme === 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"
                 slim
@@ -29,9 +30,6 @@ function onClick() {
                 :color="theme === 'light' ? 'yellow-lighten-3' : 'yellow-darken-2'"
               ></v-btn>
             </v-col>
-          </v-row>
-
-          <v-container>
             <slot name="content"></slot>
           </v-container>
         </v-img>

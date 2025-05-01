@@ -13,6 +13,10 @@ import * as directives from 'vuetify/directives'
 import App from './App.vue'
 import router from './router'
 
+// V-calendar
+import VCalendar from 'v-calendar'
+import 'v-calendar/style.css'
+
 const app = createApp(App)
 
 const vuetify = createVuetify({
@@ -26,5 +30,6 @@ const vuetify = createVuetify({
 app.use(createPinia())
 app.use(router)
 app.use(vuetify)
+app.use(VCalendar, {})
 
 app.mount('#app')
