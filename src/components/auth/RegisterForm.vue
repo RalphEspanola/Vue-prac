@@ -41,20 +41,21 @@ const onSubmit = async () => {
       data: {
         firstname: formData.value.firstname,
         lastname: formData.value.lastname,
+        is_admin: false, // Just turn to true if admin account
       },
     },
   })
 
   if (error) {
-    console.log(error)
+    // Add Error Message and Status Code
     formAction.value.formErrorMessage = error.message
     formAction.value.formStatus = error.status
   } else if (data) {
     console.log(data)
     formAction.value.formSuccessMessage = 'Successfully Registered Account'
     //Can Add more actions here
-    refVForm.value?.reset()
   }
+  refVForm.value?.reset()
   formAction.value.formProcess = false
 }
 

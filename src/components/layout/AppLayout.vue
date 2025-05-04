@@ -1,4 +1,5 @@
 <script setup>
+// import { isAuthenticated } from '@/utils/supabase'
 import { ref } from 'vue'
 
 const theme = ref(localStorage.getItem('theme') ?? 'light')

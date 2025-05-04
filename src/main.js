@@ -26,10 +26,10 @@ const vuetify = createVuetify({
   components,
   directives,
 })
-
+app.use(vuetify)
 app.use(createPinia())
 app.use(router)
-app.use(vuetify)
+
 app.use(VCalendar, {})
 
 app.mount('#app')
